@@ -4,7 +4,7 @@ import PrimaryButton from '../Shared/PrimaryButton';
 
 const Contact = () => {
   return (
-    <div className='my-28 py-16' style={{ background: `url(${appointment})` }}>
+    <div className='mt-28 py-16' style={{ background: `url(${appointment})` }}>
       <div className='py-10 text-center'>
         <h3 className='font-bold text-xl text-secondary'>Contact Us</h3>
         <h3 className='text-4xl text-white'>Stay connected with us</h3>
