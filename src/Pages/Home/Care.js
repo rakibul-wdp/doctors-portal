@@ -1,5 +1,6 @@
 import React from 'react';
 import treatment from '../../assets/images/treatment.png';
+import PrimaryButton from '../Shared/PrimaryButton';
 
 const Care = () => {
   return (
@@ -12,7 +13,7 @@ const Care = () => {
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In
             deleniti eaque aut repudiandae et a id nisi.
           </p>
-          <button className='btn bg-gradient-to-r from-secondary to-primary border-none'>Get Started</button>
+          <PrimaryButton>Get Started</PrimaryButton>
         </div>
       </div>
     </div>
