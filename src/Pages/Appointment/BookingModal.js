@@ -1,8 +1,11 @@
 import React from 'react';
 import { format } from 'date-fns';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const BookingModal = ({ date, treatment, setTreatment }) => {
   const { _id, name, slots } = treatment;
+  const [user, loading, error] = useAuthState(auth);
 
   const handleBooking = (event) => {
     event.preventDefault();
@@ -17,7 +20,7 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
       <input type='checkbox' id='booking-modal' className='modal-toggle' />
       <div className='modal modal-bottom sm:modal-middle'>
         <div className='modal-box'>
-          <label for='booking-modal' className='btn btn-sm btn-circle absolute right-2 top-2'>
+          <label htmlFor='booking-modal' className='btn btn-sm btn-circle absolute right-2 top-2'>
             ✕
           </label>
           <h3 className='font-bold text-xl text-secondary mt-5 mb-3 text-center'>{name}</h3>
@@ -29,20 +32,24 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
               className='input input-bordered w-full max-w-xs text-lg'
             />
             <select name='slot' className='select select-bordered w-full max-w-xs text-lg'>
-              {slots.map((slot) => (
-                <option value={slot}>{slot}</option>
+              {slots.map((slot, index) => (
+                <option key={index} value={slot}>
+                  {slot}
+                </option>
               ))}
             </select>
             <input
               type='text'
               name='name'
-              placeholder='Your Name'
+              disabled
+              value={user?.displayName || ''}
               className='input input-bordered w-full max-w-xs text-lg'
             />
             <input
               type='email'
               name='email'
-              placeholder='Email Address'
+              disabled
+              value={user?.email || ''}
               className='input input-bordered w-full max-w-xs text-lg'
             />
             <input
